@@ -11,13 +11,15 @@
   <div v-else-if = "acesslevel === 'marketing' ">Marketing</div>
   <div v-else>User</div>
 
+  
+
   <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import AppHeader from './components/AppHeader.vue';
+import AppHeader from './components/AppHeader.vue'
 
 export default {
   name: 'App',
