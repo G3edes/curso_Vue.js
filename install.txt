@@ -1,1 +1,103 @@
 Como installar Vue:
+yarn global add @vue/cli | npm global add @vue/cli
+
+para fazer a instalacao em maquinas virtuais tipo a do git, vc precisa configurar o PATH com esses comandos:
+
+---------------------------------CASO NAO ESTEJA FUNCIONANDO---------------------------------
+
+> export PATH="$(yarn global bin):$PATH"
+> echo 'export PATH="$(yarn global bin):$PATH"' >> ~/.bashrc
+> source ~/.bashrc
+> vue --version (se retornar a versao funciona)
+
+---------------------------------------------------------------------------------------------
+Passo 1:
+> vue creat app
+ @ vue 3
+
+ Isto criara o projeto e suas dependencias, o arquivo public é o que mais usaremos, onde temos o
+ INDEX = Local onde iremos codar
+ FAVICON = Local onde colocaremos qualquer tipo de dado fixo. EX:As img
+
+Entraremos no App 
+> cd app
+Depois iniciaremos o yarn serve (Start do servidor de desenvolvimento)
+> yarn serve
+(Atualiza em tempo real!)
+
+____________________________________________________________________________________________________________
+
+Single file component(SFC) - Componente de Arquivo Unico
+
+Todo componente que for criado precisa de .vue assim com app.vue 
+Criei o header.vue (o header do projeto)
+        -Precisamos template, script(pode ser igual ao do app)
+Todo componente que for criado necessita ser exportado pelo app
+        - import HelloWorld from './components/HelloWorld.vue' || import Header from './components/Header.vue'; 
+É nessario usar o component no template.
+Os componentes precisam ter nomes compostos 
+        -'AppHeader'
+É possivel que ele de erro por conta de cache antigo.
+_____________________________________________________________________________________________________________
+
+O Vue tem instrucoes adicionais(instrucoes normais: alt, src), como v-show v-if v-else v-else-if
+
+EXEMPLOS:
+-----------v-if-----------
+
+<template>
+  <div>
+    <p v-if="status === 'carregando'">Carregando...</p>
+    <p v-else-if="status === 'erro'">Ocorreu um erro!</p>
+    <p v-else>Conteúdo carregado!</p>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      status: 'carregando' // mude para 'erro' ou 'ok' para testar
+    }
+  }
+}
+</script>
+
+-----------v-show-----------
+
+<template>
+  <div>
+    <p v-show="mostrar">Este parágrafo aparece com v-show</p>
+    <button @click="mostrar = !mostrar">Alternar</button>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      mostrar: true
+    }
+  }
+}
+</script>
+
+------------------------------------------------------------------
+Para funcionar é preciosa declarar no component utilizando o data()
+
+Diferenca entre v-if e v-show:
+v-show: muda o estado daquela div para display none
+v-if: Nao cria a div conforme o if
+
+Interpolacao de variaveis:
+No vue temos como colocar uma div diretamente com uma variavel, ou seja:
+<div> Nome:nome </div> --> Isto é uma div normal
+
+<div> Nome:{{name}} </div> --> variavel
+    -> Quando eu chamar name no data() return{ } eu consigo alterar o valor de name.
+
+__________________________________________________________________________________________________________
+V-FOR = Feita para fazer loops
+Crie uma variavel local e use a estrutura:
+v-for=" local   in       array"                    v-bind:key="local.id" 
+      (variavel)    (nome do array)     (é possivel passar uma key para o v-for)
